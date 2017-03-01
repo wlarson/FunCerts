@@ -4,6 +4,10 @@
   <strong>Name:</strong>
   <%= @certification.name %>
 </p>
+<p>
+  Tags: <%= raw @certification.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
+</p>
+
 
 <%= link_to 'Edit', edit_certification_path(@certification) %> |
 <%= link_to 'Back', certifications_path %>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Certifications</h1>
+<h1>FunCerts</h1>
 
 <div id="tag_cloud">
   <% tag_cloud Certification.tag_counts, %w[s m l] do |tag, css_class| %>
@@ -11,7 +11,7 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Certification</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -19,10 +19,11 @@
   <tbody>
     <% @certifications.each do |certification| %>
       <tr>
-        <td><%= certification.name %></td>
-		<td>Tags: <%= raw certification.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></td>
-        <td><%#= link_to 'Show', certification %></td>
-        <td><%= link_to 'Edit', edit_certification_path(certification) %></td>
+        <td><%= link_to certification.name, certification %></td>
+
+		<td>(<%= raw certification.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>)</td>
+
+        <td><%#= link_to 'Edit', edit_certification_path(certification) %></td>
         <td><%#= link_to 'Destroy', certification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
